@@ -17,7 +17,8 @@ module Geocoder::Lookup
     end
 
     def query_url(query)
-      "#{protocol}://ap1.unwiredlabs.com/v2/address.php?type=geocoding&token=#{configuration.api_key}&format=json&q=#{query.sanitized_text}"
+      # "#{protocol}://ap1.unwiredlabs.com/v2/address.php?type=geocoding&token=#{configuration.api_key}&format=json&q=#{query.sanitized_text}"
+      "#{protocol}://ap1.unwiredlabs.com/v2/address.php?" + url_query_string(query)
     end
 
     private
@@ -25,6 +26,15 @@ module Geocoder::Lookup
     def results(query)
       return [] unless doc = fetch_data(query)
       return doc
+    end
+
+    def query_url_params(query)
+      params = {
+        :type => "geocoding&",
+        :token => configuration.api_key,
+        :format => "&json&",
+        :q => query.sanitized_text
+      }
     end
   end
 end
