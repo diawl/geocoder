@@ -1,5 +1,5 @@
 require 'geocoder/lookups/base'
-require 'geocoder/results/unwiredlabs'
+require 'geocoder/results/unwired_labs'
 
 module Geocoder::Lookup
   class UnwiredLabs < Base
@@ -28,8 +28,18 @@ module Geocoder::Lookup
       if doc.is_a?(Array)
         return doc
       elsif doc.is_a?(Hash)
-        return []
+        case doc['message']
+        when 'INVALID_REQUEST'
+          raise_error(Geocoder::InvalidRequest) ||
+            Geocoder.log(:warn, "UnwiredLabs Geocoding API error: invalid request.")
+        when 'NO_TOKEN'
+          raise_error(Geocoder::InvalidApiKey) ||
+            Geocoder.log(:warn, "UnwiredLabs Geocoding API error: no token.")
+        when 'INVALID_TOKEN'
+          raise_error(Geocoder::InvalidApiKey) ||
+            Geocoder.log(:warn, "UnwiredLabs Geocoding API error: invalid token.")
       end
+      return []
     end
 
     def query_url_params(query)
