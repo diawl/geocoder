@@ -38,6 +38,7 @@ module Geocoder::Lookup
         when 'INVALID_TOKEN'
           raise_error(Geocoder::InvalidApiKey) ||
             Geocoder.log(:warn, "UnwiredLabs Geocoding API error: invalid token.")
+        end
       end
       return []
     end
