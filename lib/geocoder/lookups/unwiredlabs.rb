@@ -30,9 +30,9 @@ module Geocoder::Lookup
 
     def query_url_params(query)
       params = {
-        :type => "geocoding&",
+        :type => "geocoding",
         :token => configuration.api_key,
-        :format => "&json&",
+        :format => "json",
         :q => query.sanitized_text
       }
     end
