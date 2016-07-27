@@ -24,7 +24,6 @@ module Geocoder::Lookup
 
     def results(query)
       return [] unless doc = fetch_data(query)
-      puts doc
       if doc.is_a?(Array)
         return doc
       elsif doc.is_a?(Hash)
