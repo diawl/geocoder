@@ -25,10 +25,9 @@ module Geocoder::Lookup
     def results(query)
       return [] unless doc = fetch_data(query)
       puts doc
-      if doc['status'] == "OK"
+      if doc.is_a?(Array)
         return doc
-      elsif doc['status'] == "error"
-        puts doc['message']
+      elsif doc.is_a?(Hash)
         return []
       end
     end
