@@ -17,7 +17,11 @@ module Geocoder::Lookup
     end
 
     def query_url(query)
-      "#{protocol}://ap1.unwiredlabs.com/v2/address.php?type=#{type}&token=#{configuration.api_key}&format=#{format}q=#{query_params}"
+      "#{protocol}://ap1.unwiredlabs.com/v2/address.php?type=geocoding&token=#{configuration.api_key}&format=json&q=#{url_query_string(query)}"
+    end
+
+    def what_does_url_query_string_do(query)
+      url_query_string(query)
     end
 
     private
