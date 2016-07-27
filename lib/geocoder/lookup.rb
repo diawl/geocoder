@@ -48,7 +48,7 @@ module Geocoder
         :geoportail_lu,
         :test,
         :latlon,
-        :unwiredlabs
+        :unwired_labs
       ]
     end
 
