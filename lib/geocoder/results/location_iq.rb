@@ -3,7 +3,7 @@ require 'geocoder/results/base'
 module Geocoder::Result
   class LocationIQ < Base
     def coordinates
-      ['lat', 'lon'].map{ |coordinate_name| @data[lat], @data[lon] }
+      ['lat', 'lon'].map{ |coordinate_name| @data[coordinate_name] }
     end
 
     def address
