@@ -41,7 +41,7 @@ module Geocoder::Lookup
 
     def query_url_params(query)
       params = {
-        :format => "json"
+        :format => "json",
         :key => configuration.api_key,
         :q => query.sanitized_text
       }
