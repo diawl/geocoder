@@ -1,7 +1,7 @@
 require 'geocoder/results/base'
 
 module Geocoder::Result
-  class LocationIQ < Base
+  class LocationIq < Base
     def coordinates
       ['lat', 'lon'].map{ |coordinate_name| @data[coordinate_name] }
     end

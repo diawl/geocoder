@@ -2,7 +2,7 @@ require 'geocoder/lookups/base'
 require 'geocoder/results/location_iq'
 
 module Geocoder::Lookup
-  class LocationIQ < Base
+  class LocationIq < Base
 
     def name
       'locationiq.org'
@@ -30,10 +30,10 @@ module Geocoder::Lookup
         case doc['error']
         when 'No key'
           raise_error(Geocoder::InvalidApiKey) ||
-            Geocoder.log(:warn, "LocationIQ Geocoding API error: no token.")
+            Geocoder.log(:warn, "LocationIq Geocoding API error: no token.")
         when 'Invalid key'
           raise_error(Geocoder::InvalidApiKey) ||
-            Geocoder.log(:warn, "LocationIQ Geocoding API error: invalid token.")
+            Geocoder.log(:warn, "LocationIq Geocoding API error: invalid token.")
         end
       end
       return []
